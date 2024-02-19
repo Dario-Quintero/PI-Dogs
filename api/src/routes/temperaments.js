@@ -1,6 +1,6 @@
 const router  = require('express').Router()
-const temperamentsController = require('../controllers/temperamentsController')
+const {getTemperaments} = require('../controllers/temperamentsController')
 
-//router.get('/', temperamentsController)
+router.get('/', getTemperaments)
 
 module.exports = router;

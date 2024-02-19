@@ -17,6 +17,5 @@ Temperaments.belongsToMany(Dog, {through: "dog_temperaments"})
 
 
 module.exports = {
-  ...database.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: database,     // para importart la conexión { conn } = require('./db.js');
+  database
 };

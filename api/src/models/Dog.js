@@ -3,16 +3,20 @@ const { DataTypes } = require('sequelize');
 module.exports = (database) => {
   database.define('dog', {
     id:{
-      type: DataTypes.UUID,
-      primaryKey: true
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      autoComplete: true
     },
     image:{
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     name:{
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true
     },
     height:{
       type: DataTypes.STRING,
