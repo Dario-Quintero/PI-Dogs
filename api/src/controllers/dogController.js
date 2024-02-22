@@ -4,9 +4,21 @@ const axios = require('axios')
 const {database} = require('../db')
 const Dog = database.models.dog
 
-const getDogs = async(req, res) => {
+const randomDog = async (req, res) =>{
     try{
-        const {data} = await axios(`https://api.thedogapi.com/v1/images/search?limit=15&api_key=${API_KEY}`)
+        const {data} = await axios(`https://api.thedogapi.com/v1/images/search?limit=1`)
+        if(!data){
+            return res.status(404).send('Dog not found')
+        }
+        return res.status(200).json(data)
+    }catch(err){
+        return res.status(500).send(`Internal Error - ${err.message}`)
+    }
+}
+
+const getDogs = async (req, res) => {
+    try{
+        const {data} = await axios(`https://api.thedogapi.com/v1/images/search?limit=20&api_key=${API_KEY}`)
         if(!data){
             return res.status(404).send('Dogs not found')
         }
@@ -58,6 +70,7 @@ const postDog = async (req, res) => {
     }
 }
 module.exports= {
+    randomDog,
     getDogs,
     getDogByID,
     getDogByName,

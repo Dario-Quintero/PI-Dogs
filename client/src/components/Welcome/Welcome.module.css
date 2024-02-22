@@ -1,0 +1,42 @@
+.page {
+    position: relative;
+}
+
+.title{
+    background-color: rgba(249, 252, 178, 0.5);
+    color: whitesmoke;
+    position: absolute;
+    left: 50%;
+    top:45%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    align-items: center;
+    width: 35%;
+    height: 10%;
+    border-radius: 15px;
+}
+.title h1{
+    margin: auto;
+}
+.title button{
+    margin: auto;
+    width: 20%;
+    color: black;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 200px;
+    overflow: hidden;
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+  
+.dogImage {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+}
+.dogImage img{
+    object-fit: cover;
+}
