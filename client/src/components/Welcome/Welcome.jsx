@@ -1,25 +1,21 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+
+import { useNavigate } from 'react-router-dom'
 import s from './Welcome.module.css'
 
-const Welcome = () => {
-    const [dogs, setDogs] = useState([])
-    useEffect(() => {
-        const getDogs = async () => {
-            const {data} = await axios('http://localhost:3001/dogspi/dogs')
-            setDogs(prevDogs => [...prevDogs, ...data.map(dog => dog.url)])
-        }
-        getDogs()
-    },[])
+const Welcome = (props) => {
+    const navigate = useNavigate()
+    const goHome = () =>{
+        navigate('/home')
+    }
         return(
             <div className={s.page}>
                 <div className={s.title}>
                     <h1 >Welcome to Best Dog-PI </h1>
-                    <button>Home</button>
+                    <button onClick={goHome}>Home</button>
                 </div>
                 <div className={s.container}>
-                    {dogs.map((dog, index) => (
-                    <img key={index} src={dog}  className={s.dogImage} />))}
+                    {props.dogs.map((dog, index) => (
+                    <img key={index} src={dog.url} alt={dog+index} className={s.dogImage} />))}
                 </div>
             </div>
         )
