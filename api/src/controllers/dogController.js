@@ -67,7 +67,6 @@ const getDogs = async (req, res) => {
                 breedFor: 'No information available'
             }
         })
-        console.log(dogs)
         return res.status(200).json(dogs)
 
     }catch(err){

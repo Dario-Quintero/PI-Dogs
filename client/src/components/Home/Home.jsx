@@ -20,8 +20,8 @@ const Home = (props) => {
                         <option value="Breed">Breed</option>
                     </select>
                     <select name="" id="">
-                        <option value="ASC">ASC</option>
-                        <option value="DSC">DSC</option>
+                        <option value="A">Ascendent</option>
+                        <option value="D">Descendent</option>
 
                     </select>
                 </div>

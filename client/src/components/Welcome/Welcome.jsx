@@ -15,7 +15,7 @@ const Welcome = (props) => {
                 </div>
                 <div className={s.container}>
                     {props.dogs.map((dog, index) => (
-                    <img key={index} src={dog.url} alt={dog+index} className={s.dogImage} />))}
+                    <img key={index} src={dog.image} alt={dog+index} className={s.dogImage} />))}
                 </div>
             </div>
         )

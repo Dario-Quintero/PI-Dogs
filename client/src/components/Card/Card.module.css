@@ -1,0 +1,52 @@
+.card{
+    background-color: rgba(70, 70, 70, .8);
+    color: white;
+    display:flex;
+    margin:0;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    width: calc(20vw - 20px);
+    height: calc(20vw)
+  }
+
+  .divImg{
+    margin: 15px;
+    max-width: 100%;
+    height: 75%;
+    overflow: hidden;
+    display: flex; 
+    justify-content: center; 
+    align-items: top;
+    border-radius: 10px;
+}
+
+.divImg img{
+    border-radius: 10px;
+    object-position: center;
+    width: 100%;
+    height: auto;
+
+}
+
+.divName{
+    height: 25%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.divName h3{
+    margin:0;
+    font-size: 1.5vw;
+}
+
+.divName button{
+    max-width: 90px;
+    font-size: 1vw;
+}
