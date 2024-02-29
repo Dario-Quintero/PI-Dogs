@@ -1,0 +1,72 @@
+.page{
+    height: 100vh;
+    background-image: url('../../img/space.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    margin: none;
+    overflow: hidden;
+}
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    padding: 10px;
+    background-color: rgba(184, 184, 184, .2);
+    box-shadow: 0 2px 5px rgb(206, 78, 195);
+
+}
+.navbar img {
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: -3px 1px 5px rgb(0, 187, 213), 3px -1px 5px rgb(206, 78, 195);
+}
+.navbar h1{
+    margin: 0 3vw;
+    color: whitesmoke;
+    text-shadow: -3px 2px 2px rgb(0, 187, 213), 2px -2px 2px rgb(206, 78, 195);
+}
+.navbar button{
+    border: none;
+    width: 8vw;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: -3px 2px rgb(0, 187, 213), 2px -2px rgb(206, 78, 195);
+    font-weight: bold;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 3vh;
+    height: 50vh;
+    max-width: fit-content;
+    overflow: hidden;
+    background-color: rgba(184, 184, 184, .2);
+    box-shadow: -2px 2px 5px rgb(206, 78, 195), 2px -2px 5px rgb(0, 187, 213);
+    color: whitesmoke;
+    border-radius: 15px;
+}
+.containerImg{
+    overflow: hidden;
+    height: 90%;
+    max-width: 40%;
+    margin: 2vw;
+    border-radius: 10%;
+    box-shadow: 0 0 15px whitesmoke;
+}
+.containerImg img{
+    overflow: hidden;
+    object-fit: cover;
+    height: 100%;
+    max-width: 100%;
+    border-radius: 10%;
+}
+.title{
+    text-shadow: -3px 2px 2px rgb(0, 187, 213), 2px -2px 2px rgb(206, 78, 195);
+}
+.punto{
+    text-shadow: -2px 2px 2px rgb(0, 187, 213), 2px -2px 2px rgb(206, 78, 195);
+}

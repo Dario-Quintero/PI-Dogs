@@ -1,10 +1,8 @@
 .container{
     display: flex;
-    flex-wrap: wrap;
-    max-width: 100%;
-    margin-top: 10px;
-    margin:auto;
-    overflow: hidden;
-    gap: 10px;
     justify-content: center;
+    flex-wrap: wrap-reverse;
+    max-width: 100%;
+    overflow: hidden;
+    gap: 15px;
   }

@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom'
 import s from './Welcome.module.css'
 
@@ -10,7 +9,7 @@ const Welcome = (props) => {
         return(
             <div className={s.page}>
                 <div className={s.title}>
-                    <h1 >Welcome to Best Dog-PI </h1>
+                    <h1 >Welcome to Space Dogs </h1>
                     <button onClick={goHome}>Home</button>
                 </div>
                 <div className={s.container}>

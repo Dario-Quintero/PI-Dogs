@@ -50,21 +50,11 @@ const getDogs = async (req, res) => {
             return dog.breeds && dog.breeds.length > 0 ? {
                 id: dog.id,
                 name: dog.breeds[0].name,
-                image: dog.url,
-                weight: dog.breeds[0].weight.metric,
-                height: dog.breeds[0].height.metric,
-                years: dog.breeds[0].life_span,
-                temperaments: dog.breeds[0].temperament,
-                breedFor: dog.breeds[0].bred_for ? dog.breeds[0].bred_for : 'No information available'
+                image: dog.url
             } : {
                 id: dog.id,
                 image: dog.url,
-                name: 'No information available',
-                weight: 'No information available',
-                height: 'No information available',
-                years: 'No information available',
-                temperaments: 'No information available',
-                breedFor: 'No information available'
+                name: infoNA
             }
         })
         return res.status(200).json(dogs)
@@ -115,28 +105,21 @@ const getDogByName = async (req, res) => {
     const {name} = req.query
     try {
         const {data} = await axios(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
+        if(!data.breeds[0].name || data.breeds[0].name === infoNA){
+            return res.status(404).send('Dog not found')
+        }
         let dog;
         if(data.breeds){
             dog = {
                 id: data.id,
                 name: data.breeds[0].name,
                 image: data.url,
-                weight: data.breeds[0].weight.metric,
-                height: data.breeds[0].height.metric,
-                years: data.breeds[0].life_span,
-                temperaments: data.breeds[0].temperament,
-                breedFor: data.breeds[0].bred_for ? data.breeds[0].bred_for : infoNA
             }
         } else {
             dog = {
                 id: data.id,
                 image: data.url,
                 name: infoNA,
-                weight: infoNA,
-                height: infoNA,
-                years: infoNA,
-                temperaments: infoNA,
-                breedFor: infoNA
             }
         }
         return res.status(200).json(dog)

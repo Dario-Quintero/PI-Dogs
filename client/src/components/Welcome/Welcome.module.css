@@ -1,13 +1,15 @@
 .page {
     position: relative;
+    height: 100vh;
+    width: 100vw;
 }
 
 .title{
-    background-color: rgba(249, 252, 178, 0.5);
-    color: whitesmoke;
+    background-color: rgba(184, 184, 184, .6);
     position: absolute;
     left: 50%;
     top:45%;
+    transform: translate(-50%, -50%);
     display: grid;
     align-items: center;
     width: 35%;
@@ -16,11 +18,17 @@
 }
 .title h1{
     margin: auto;
+    color: whitesmoke;
+    text-shadow: -3px 2px 3px rgb(0, 187, 213), 2px -2px 3px rgb(206, 78, 195);
 }
 .title button{
     margin: auto;
     width: 20%;
     color: black;
+    border-radius: 10px;
+    box-shadow: -3px 2px 2px rgb(0, 187, 213), 2px -2px 2px rgb(206, 78, 195);
+    font-weight: bold;
+    border: none;
 }
 .container {
     display: grid;
