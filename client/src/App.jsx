@@ -11,14 +11,18 @@ function App() {
   const [dogs, setDogs] = useState([])
 
     useEffect(() => {
-        const getDogs = async () => {
-            const {data} = await axios('http://localhost:3001/dogspi/dogs')
-            setDogs(prevDogs => [...prevDogs, ...data.map(dog => dog)])
-        }
-        getDogs()
+      getDogs()
     },[])
 
+    const getDogs = async () => {
+        const {data} = await axios('http://localhost:3001/dogspi/dogs')
+        setDogs(prevDogs => [...prevDogs, ...data.map(dog => dog)])
+    }
+
     const handleSearch = async(input) =>{
+      if(!input){
+        return window.alert('Insert a Dog name')
+      }
       if(dogs.some(d => d.name.toLowerCase() === input.toLowerCase())){
         return window.alert('Dog on Screen')
       }
@@ -33,7 +37,7 @@ function App() {
     <div >
       <Routes>
         <Route path='/' element={<Welcome dogs={dogs}/>}/>   
-        <Route path='/home' element={<Home dogs={dogs} handleSearch={handleSearch}/>}/>
+        <Route path='/home' element={<Home dogs={dogs} handleSearch={handleSearch} getDogs={getDogs}/>}/>
         <Route path='/detail/:id' element={<Detail />}/> 
         <Route path='/create' element={<Create />} />
       </Routes>

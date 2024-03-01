@@ -4,7 +4,7 @@ import s from './Home.module.css'
 import { useState } from "react"
 import { useNavigate } from 'react-router-dom'
 
-const Home = ({dogs, handleSearch}) => {
+const Home = ({dogs, handleSearch, getDogs}) => {
     const [state, setState] = useState('')
     const handleChange = (event) => {
         const {value} = event.target
@@ -31,6 +31,7 @@ const Home = ({dogs, handleSearch}) => {
                         <img src={spacedog} alt="spacedog" />
                         <h1>Space Dogs</h1>
                     <div>
+                        <button onClick={getDogs}>Get dogs</button>
                         <input type='text' value={state} placeholder="Search Dog" onChange={handleChange} onKeyDown={handleKeyDown}/>
                         <button onClick={handleClick}>Search</button>
                         <button onClick={goCreate}>Create</button>
@@ -49,7 +50,7 @@ const Home = ({dogs, handleSearch}) => {
                     </select>
                 </div>
                 <div className={s.cards}> 
-                    <Cards dogs={dogs}/>
+                    <Cards dogs={dogs} itemsXPage='18'/>
                 </div>
                 
             </div>

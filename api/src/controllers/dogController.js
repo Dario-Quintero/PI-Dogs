@@ -44,7 +44,7 @@ const randomDog = async (req, res) =>{
 
 const getDogs = async (req, res) => {
     try{
-        const {data} = await axios(`https://api.thedogapi.com/v1/images/search?limit=20&api_key=${API_KEY}`)
+        const {data} = await axios(`https://api.thedogapi.com/v1/images/search?limit=18&api_key=${API_KEY}`)
         if(!data){
             return res.status(404).send('Dogs not found')
         }
@@ -56,7 +56,7 @@ const getDogs = async (req, res) => {
             } : {
                 id: dog.id,
                 image: dog.url,
-                name: infoNA
+                name: false
             }
         })
         return res.status(200).json(dogs)

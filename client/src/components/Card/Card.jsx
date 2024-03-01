@@ -1,25 +1,23 @@
 import { useNavigate } from 'react-router-dom'
 import s from './Card.module.css'
 
-const Card = (props) =>{
+const Card = ({dog}) =>{
     const navigate = useNavigate()
     const goDetail = () =>{
-        navigate(`/detail/${props.dog.id}`)
+        navigate(`/detail/${dog.id}`)
     }
     return(
         <div className={s.card}>
             <div className={s.divImg}>
-                <img src={props.dog.image} alt="" />
+                <img src={dog.image} alt="" />
             </div>
             <div className={s.divName}>
-                {props.dog.name === 'Information not available' ? (
-                    <h3>{props.dog.name}</h3>
-                ) : (
+                {dog.name&&
                     <div >
-                        <h3>{props.dog.name}</h3>
+                        <h3>{dog.name}</h3>
                         <button onClick={goDetail}>Details</button>
                     </div>
-                )}
+                }
             </div>
         </div>
     )
