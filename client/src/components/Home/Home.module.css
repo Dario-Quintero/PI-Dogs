@@ -36,6 +36,7 @@ body{
 }
 
 .navbar button{
+    padding: 0.5vh;
     border: none;
     width: 8vw;
     margin: 5px;
@@ -44,6 +45,7 @@ body{
     font-weight: bold;
 }
 .navbar input {
+    padding: 0.5vh;
     border: none;
     height: 25%;
     border-radius: 10px;

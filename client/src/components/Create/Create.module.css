@@ -1,0 +1,57 @@
+.page{
+    background-image: url('../../img/space.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+.container{
+    height: 70vh;
+    width: 30vw;
+    background-color: rgba(184, 184, 184, .2);
+    box-shadow: -2px 2px 5px rgb(206, 78, 195), 2px -2px 5px rgb(0, 187, 213);
+    border-radius: 2vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container img{
+    border-radius: 50%;
+    box-shadow: -3px 1px 5px rgb(0, 187, 213), 3px -1px 5px rgb(206, 78, 195);
+    max-height: 30%;
+    margin-bottom: 3vh;
+}
+.container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container form input{
+    padding: 1vh;
+    border: none;
+    height: 25%;
+    width: 9vw;
+    margin: 10px;
+    border-radius: 10px; 
+    box-shadow: -3px 2px rgb(0, 187, 213), 2px -2px rgb(206, 78, 195);
+}
+.divButton{
+    display: flex;
+    margin-top: 2vh;
+}
+button{
+    padding: 0.5vh;
+    border: none;
+    width: 4.5vw;
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: -3px 2px rgb(0, 187, 213), 2px -2px rgb(206, 78, 195);
+    font-weight: bold;
+}

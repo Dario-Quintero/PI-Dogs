@@ -4,6 +4,7 @@ import axios from 'axios'
 import Welcome from './components/Welcome/Welcome.jsx' 
 import Home from './components/Home/Home.jsx'
 import Detail from './components/Detail/Detail.jsx'
+import Create from './components/Create/Create.jsx'
 import './App.css';
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Welcome dogs={dogs}/>}/>   
         <Route path='/home' element={<Home dogs={dogs} handleSearch={handleSearch}/>}/>
-        <Route path='/detail/:id' element={<Detail />}/>      
+        <Route path='/detail/:id' element={<Detail />}/> 
+        <Route path='/create' element={<Create />} />
       </Routes>
     </div>
   );

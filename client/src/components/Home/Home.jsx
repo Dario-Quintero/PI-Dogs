@@ -2,7 +2,7 @@ import Cards from '../Cards/Cards.jsx'
 import spacedog from '../../img/spacedog.png'
 import s from './Home.module.css'
 import { useState } from "react"
-
+import { useNavigate } from 'react-router-dom'
 
 const Home = ({dogs, handleSearch}) => {
     const [state, setState] = useState('')
@@ -21,6 +21,10 @@ const Home = ({dogs, handleSearch}) => {
         }
      };
 
+    const navigate = useNavigate()
+    const goCreate = () =>{
+        navigate('/Create')
+    }
         return(
             <div className={s.page}>
                 <div className={s.navbar}>
@@ -29,7 +33,7 @@ const Home = ({dogs, handleSearch}) => {
                     <div>
                         <input type='text' value={state} placeholder="Search Dog" onChange={handleChange} onKeyDown={handleKeyDown}/>
                         <button onClick={handleClick}>Search</button>
-                        <button >Create</button>
+                        <button onClick={goCreate}>Create</button>
                     </div>
                 </div>
                 <div className={s.filter}> 

@@ -3,7 +3,9 @@ const {API_KEY} = process.env
 const axios = require('axios')
 const {database} = require('../db')
 const Dog = database.models.dog
+const Temperaments = database.models.temperaments
 const infoNA = 'Information not available'
+
 const randomDog = async (req, res) =>{
     try{
         const {data} = await axios(`https://api.thedogapi.com/v1/images/search?limit=1&api_key=${API_KEY}`)
@@ -71,9 +73,7 @@ const getDogByID = async(req, res) => {
         if(!data){
             return res.status(404).send('Dog not found')
         }
-        let dog;
-        if(data.breeds){
-            dog = {
+        const dog = {
                 id: data.id,
                 name: data.breeds[0].name,
                 image: data.url,
@@ -83,18 +83,7 @@ const getDogByID = async(req, res) => {
                 temperaments: data.breeds[0].temperament,
                 breedFor: data.breeds[0].bred_for ? data.breeds[0].bred_for : infoNA
             }
-        } else {
-            dog = {
-                id: data.id,
-                image: data.url,
-                name: infoNA,
-                weight: infoNA,
-                height: infoNA,
-                years: infoNA,
-                temperaments: infoNA,
-                breedFor: infoNA
-            }
-        }
+        
         return res.status(200).json(dog)
     }catch(err){
         return res.status(500).send(`Internal Error - ${err.message}`)
@@ -129,19 +118,23 @@ const getDogByName = async (req, res) => {
 }
 
 const postDog = async (req, res) => {
-    const {image, name, height, weight, years} = req.body
-    if(!image || !name || !height || !weight || !years){
+    const {image, name, height, width, years, temperaments} = req.body
+    if(!image || !name || !height || !width || !years || !temperaments){
         return res.status(400).json({message: 'Incomplete information'})
     }
     try {   
         const [newDog, created] = await Dog.findOrCreate({
             where: { name : name},
-            defaults:{ image, name, height, weight, years }
+            defaults:{ image, name, height, width, years}
         })
+        for(let i = 0; i<temperaments.length; i++){
+            const [temperament] = await Temperaments.findOrCreate({where:{name:temperaments[i]}})
+            await newDog.addTemperaments(temperament)
+        }
         if(created){
             res.status(201).json(newDog)
         }else{
-            res.status(200).json({message:"This dog already exists"})
+            res.status(404).json({message:"This dog already exists"})
         }
     } catch (err) {
         return res.status(500).send(`Internal Error - ${err.message}`)
