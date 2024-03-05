@@ -18,7 +18,7 @@ const getTemperaments = async(req, res) => {
         for(let temp of temperaments){
             await Temperaments.findOrCreate({where:{name: temp}})
         }
-        res.status(200).json(temperaments);
+        res.status(200).json(temperaments.sort());
     } catch (err) {
         return res.status(500).send(`Internal Error - ${err.message}`)
     }

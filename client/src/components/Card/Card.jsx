@@ -12,11 +12,12 @@ const Card = ({dog}) =>{
                 <img src={dog.image} alt="" />
             </div>
             <div className={s.divName}>
-                {dog.name&&
+                {dog.name !== 'false'&&(
                     <div >
                         <h3>{dog.name}</h3>
                         <button onClick={goDetail}>Details</button>
                     </div>
+                    )
                 }
             </div>
         </div>

@@ -1,7 +1,7 @@
 .container{
     display: flex;
     justify-content: center;
-    flex-wrap: wrap-reverse;
+    flex-wrap: wrap;
     max-width: 100%;
     overflow: hidden;
     gap: 15px;

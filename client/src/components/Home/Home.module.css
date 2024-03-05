@@ -5,10 +5,11 @@ body{
     background-image: url('../../img/space.jpg');
     background-attachment: fixed;
     background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    height: 130vh;
     width: 100vw;
 }
 
