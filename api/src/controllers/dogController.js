@@ -96,19 +96,39 @@ const getDogByID = async(req, res) => {
 const getDogByName = async (req, res) => {
     const {name} = req.query
     try {
-        const {data} = await axios(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
-        if(!data || data.length === 0){
+        const data = await Dog.findOne({ where: {name}})
+        
+        if(!data){
+           const {data: apiData} = await axios(`https://api.thedogapi.com/v1/breeds/search?q=${name}`)
+            if(!apiData || apiData.length === 0){
             return res.status(404).send('Dog not found')
+            }
+            let dog = {
+            req: 'api',
+            id:'',
+            }
+            apiData.forEach(item => {
+            dog.id = item.reference_image_id;
+            }); 
+            return res.status(200).json(dog)
         }
-        let id = ''
-        data.forEach(item => {
-            id = item.reference_image_id;
-        });
-        return res.status(200).json(id)
+
+        let dog = {
+            req: 'db',
+            id: data.id, 
+            image: data.image, 
+            name: data.name, 
+            height: data.height, 
+            width: data.width, 
+            years: data.years,
+            temperaments: ''
+        }
+        return res.status(200).json(dog)
     } catch (err) {
         return res.status(500).send(`Internal Error - ${err.message}`)
     }
 }
+
 
 
 const postDog = async (req, res) => {
