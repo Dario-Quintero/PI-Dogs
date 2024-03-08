@@ -49,18 +49,6 @@ export const reqDogs = () => {
         }
     }
 
-
-export const reqDog = (input) => {
-    return async dispatch => {
-        try {
-            const {data} = await axios (`http://localhost:3001/dogspi/dogs/name?name=${input}`)
-            dispatch(addDogs(data))
-        } catch (error) {
-            dispatch(errorHandler(error))
-        }
-    }
-}
-
 export const reqTemps = () => {
     return async dispatch => {
         try {

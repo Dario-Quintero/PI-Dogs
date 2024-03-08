@@ -1,14 +1,16 @@
+import axios from 'axios';
 import { useEffect} from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { reqDogs, reqTemps} from './redux/action.js'
 import Welcome from './components/Welcome/Welcome.jsx' 
 import Home from './components/Home/Home.jsx'
 import Detail from './components/Detail/Detail.jsx'
 import Create from './components/Create/Create.jsx'
 import './App.css';
-import { reqDogs, reqDog, reqTemps} from './redux/action.js'
 
 function App() {
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const dogs = useSelector(state => state.dogs)
   const error = useSelector(state => state.error)
@@ -38,7 +40,12 @@ function App() {
       if(dogs.some(d => d.name.toLowerCase() === input.toLowerCase())){
          window.alert('Dog on Screen')
       }else{
-        dispatch(reqDog(input))
+       try {
+        const {data} = await axios (`http://localhost:3001/dogspi/dogs/name?name=${input}`)
+        navigate(`/detail/${data}`)
+       } catch (error) {
+        window.alert('Dog not found')
+       }
       }
     }
 

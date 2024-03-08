@@ -100,12 +100,11 @@ const getDogByName = async (req, res) => {
         if(!data || data.length === 0){
             return res.status(404).send('Dog not found')
         }
-        const dog = {
-                id: data.id,
-                name: data.name,
-                image: data.url,
-            }
-        return res.status(200).json(dog)
+        let id = ''
+        data.forEach(item => {
+            id = item.reference_image_id;
+        });
+        return res.status(200).json(id)
     } catch (err) {
         return res.status(500).send(`Internal Error - ${err.message}`)
     }
