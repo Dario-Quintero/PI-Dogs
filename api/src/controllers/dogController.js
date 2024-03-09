@@ -119,9 +119,9 @@ const getDogByName = async (req, res) => {
             image: data.image, 
             name: data.name, 
             height: data.height, 
-            width: data.width, 
+            weight: data.weight, 
             years: data.years,
-            temperaments: ''
+            temperaments: (await data.getTemperaments()).map(temperament => temperament.name).join(', ')
         }
         return res.status(200).json(dog)
     } catch (err) {
@@ -132,19 +132,22 @@ const getDogByName = async (req, res) => {
 
 
 const postDog = async (req, res) => {
-    const {image, name, height, width, years, temperaments} = req.body
-    if(!image || !name || !height || !width || !years || !temperaments){
+    const {image, name, height, weight, years, temperaments} = req.body
+    if(!image || !name || !height || !weight || !years || !temperaments){
         return res.status(400).json({message: 'Incomplete information'})
     }
     try {   
         const [newDog, created] = await Dog.findOrCreate({
             where: { name : name},
-            defaults:{ image, name, height, width, years}
+            defaults:{ image, name, height, weight, years}
         })
-        for(let i = 0; i<temperaments.length; i++){
-            const [temperament] = await Temperaments.findOrCreate({where:{name:temperaments[i]}})
-            await newDog.addTemperaments(temperament)
+
+        let temperamentsArray = temperaments.split(', ').map(temp => temp.trim());
+        for(let i = 0; i<temperamentsArray.length; i++){
+            const [temperament] = await Temperaments.findOrCreate({where:{name:temperamentsArray[i]}});
+            await newDog.addTemperaments(temperament);
         }
+
         if(created){
             res.status(201).json(newDog)
         }else{

@@ -13,7 +13,7 @@ const Create = () => {
         image:'',
         name:'',
         years:'',
-        width:'',
+        weight:'',
         height:'',
         temperaments:''
 })
@@ -62,7 +62,7 @@ const Create = () => {
                     <input type="url" onChange={handleChange} name="image" placeholder="Image (url)" />
                     <input type="text" onChange={handleChange} name="name" placeholder="Name" />
                     <input type="text" onChange={handleChange} name="years" placeholder="Years" />
-                    <input type="number" onChange={handleChange} name="width" placeholder="Width (number)" />
+                    <input type="number" onChange={handleChange} name="weight" placeholder="Weight (number)" />
                     <input type="number" onChange={handleChange} name="height" placeholder="Height (number)" />
                     <input type="text" onChange={handleChange} name="temperaments" placeholder="Temperaments" />
                     <div className={s.divButton}>

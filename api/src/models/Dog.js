@@ -22,7 +22,7 @@ module.exports = (database) => {
       type: DataTypes.STRING,
       allowNull: false
     },
-    width:{
+    weight:{
       type: DataTypes.STRING,
       allowNull: false
     },

@@ -11,7 +11,7 @@ function Search () {
     const goHome = () =>{
         navigate('/home')
     }
-  
+    console.log(dog.temperaments)
     return dog? (
         <div className={s.page}>
             <div className={s.navbar}>
@@ -30,10 +30,10 @@ function Search () {
                     </div> ) : ( 
                     <div className={s.containerInfo}>
                         <h1 className={s.title}>{dog.name} </h1>
-                        <p className={s.info}><span className={s.punto}>•</span> {dog.years}</p>
+                        <p className={s.info}><span className={s.punto}>•</span> {dog.years.includes('years')? dog.years : dog.years + 'Years'}</p>
                         <p className={s.info}><span className={s.punto}>•</span> Weight: {dog.weight} - Height: {dog.height} (metric) </p>
                         <p className={s.info}><span className={s.punto}>•</span> Temperaments: {dog.temperaments} </p>
-                        <p className={s.info}><span className={s.punto}>•</span> Breed for: {dog.breedFor} </p>
+                        {dog.breedFor &&<p className={s.info}><span className={s.punto}>•</span> Breed for: {dog.breedFor} </p>}
                     </div> )}
             </div>
         </div>
